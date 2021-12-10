@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class ClasseGramatical(models.Model):
     """Modelo representando uma classe gramatical."""
@@ -16,5 +17,10 @@ class Termo(models.Model):
     categoria = models.CharField(max_length=100)
     equivalencia = models.IntegerField()
 
+    slug = models.SlugField(null=False, unique=True)
+
     def __str__(self):
         return self.termo
+
+    def get_absolute_url(self):
+        return reverse("termo_detail", kwargs={"slug": self.slug})

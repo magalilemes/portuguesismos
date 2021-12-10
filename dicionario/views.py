@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.views import generic
+from .models import Termo
+from django.shortcuts import get_object_or_404
 
-# Create your views here.
+class TermoDetailView(generic.DetailView):
+    model = Termo
+    template_name = 'termo_detail.html'
+
