@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class ClasseGramatical(models.Model):
     """Modelo representando uma classe gramatical."""
@@ -21,7 +22,9 @@ class Termo(models.Model):
     definicao = models.TextField(help_text='Insira uma definição em português do termo.')
     classe_gramatical = models.ForeignKey(ClasseGramatical, on_delete=models.SET_NULL, null=True)
     categoria = models.ManyToManyField(Categoria)
-    equivalencia = models.IntegerField()
+    equivalencia = models.IntegerField(null=True, blank=True, validators=[
+        MinValueValidator(1),
+        MaxValueValidator(3)])
 
     slug = models.SlugField(null=False, unique=True)
 
