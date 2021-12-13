@@ -1,37 +1,120 @@
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Actor&family=Alegreya&family=Cormorant:wght@300;400&display=swap');body{
+@import url('https://fonts.googleapis.com/css2?family=Actor&family=Alegreya&family=Cormorant:wght@300;400&display=swap');
+body{
     background-color: #FFF5EA;
     position: relative;
     margin: auto;
-    width: 70%;
 }
 hr{
-    border: 2px dashed #99C1B9;
+    border: 1px dashed #99C1B9;
 }
-.termo{
-    font-family: 'Cormorant', serif;
-    font-size: 65px;
-}
-.classe-gramatical{
-    font-family: 'Actor', serif;
-    font-size: 22px;
-    text-transform: lowercase;
-}
-.traducao{
+.categoria{
     font-family: 'Alegreya', serif;
     font-size: 24px;
+    font-weight: bold;
+    background-color: #E5E5E5;
+    list-style-type: none;
+    margin: 5px;
+    padding: 5px;
+    display: inline;
+    border-radius: 10px;
+}
+.classe-gramatical{
+    font-family: 'Alegreya', serif;
+    font-size: 22px;
+    text-transform: lowercase;
+    height: 2vw;
+    margin: 5px;
 }
 .definicao{
     font-family: 'Alegreya', serif;
     font-size: 24px;
 }
+.equivalencia{
+    height: 2vw;
+    display: table-cell;
+    vertical-align: bottom;
+}
+.flex-container{
+    width: 100vw;
+    display: flex;
+}
+.informacao{
+    width: 85%;
+    margin: 20px 120px;
+}
+.linha{
+    position: relative;
+}
+.linha:before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    border-top: 1px solid #99C1B9;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+.quadrado-equivalencia{
+    height: 25px;
+    width: 25px;
+    margin: 5px;
+    float: left;
+}
+.termo{
+    background-color: #FFF5EA;
+    font-family: 'Cormorant', serif;
+    overflow: hidden;
+    border: 1px #99C1B9 solid;
+    font-size: 65px;
+    padding: 3px 20px 2px 20px;
+    margin-left: 100px;
+    display: inline;
+    font-weight: bold;
+}
+.traducao{
+    font-family: 'Alegreya', serif;
+    font-size: 24px;
+}
+.amarelo{
+    background-color: #F0E748;
+}
+.verde{
+    background-color: #7BE37B;
+}
+.vermelho{
+    background-color: #FA4B3E;
+}
 </style>
 <body>
-<h1>Portuguesismos</h1>
+    <h1>Portuguesismos</h1>
 
-<div class="termo">{{ object.termo }}</div>
-<div class="classe-gramatical">{{ object.classe_gramatical }}</div>
-<hr>
-<div class="traducao"><b>tradução:</b> {{ object.traducao }}</div>
-<div class="definicao"><b>definição: </b>{{ object.definicao }}</div>
+    <div class="linha">
+        <div class="flex-container">
+            <div class="termo">{{ object.termo }}</div>
+            <div class="termo-detalhes">
+                <div class="equivalencia">
+                    {% if object.equivalencia == 1 %}
+                        <div class="quadrado-equivalencia vermelho"></div>
+                    {% elif object.equivalencia == 2 %}
+                        <div class="quadrado-equivalencia amarelo"></div>
+                        <div class="quadrado-equivalencia amarelo"></div>
+                    {% elif object.equivalencia == 3 %}
+                        <div class="quadrado-equivalencia verde"></div>
+                        <div class="quadrado-equivalencia verde"></div>
+                        <div class="quadrado-equivalencia verde"></div>
+                    {% endif %}
+                </div>
+                <div class="classe-gramatical">{{ object.classe_gramatical }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="informacao">
+        <div class="traducao"><b>tradução:</b> {{ object.traducao }}</div>
+        <hr>
+        <div class="definicao"><b>definição: </b>{{ object.definicao }}</div><br>
+        {% for categoria in object.categoria.all %}
+            <li class="categoria">{{ categoria.nome }}</li>
+        {% endfor %}
+    </div>
 </body>
