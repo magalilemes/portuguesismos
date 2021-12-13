@@ -24,16 +24,13 @@ hr{
     font-size: 22px;
     text-transform: lowercase;
     height: 2vw;
-    margin: 5px;
-}
-.definicao{
-    font-family: 'Alegreya', serif;
-    font-size: 24px;
+    padding: 10px 0 0 10px;
 }
 .equivalencia{
     height: 2vw;
     display: table-cell;
     vertical-align: bottom;
+    padding: 0 0 0 5px;
 }
 .flex-container{
     width: 100vw;
@@ -42,6 +39,8 @@ hr{
 .informacao{
     width: 85%;
     margin: 20px 120px;
+    font-family: 'Alegreya', serif;
+    font-size: 24px;
 }
 .linha{
     position: relative;
@@ -71,10 +70,6 @@ hr{
     margin-left: 100px;
     display: inline;
     font-weight: bold;
-}
-.traducao{
-    font-family: 'Alegreya', serif;
-    font-size: 24px;
 }
 .amarelo{
     background-color: #F0E748;
@@ -118,8 +113,15 @@ hr{
         </div>
     </div>
     <div class="informacao">
+        {% if object.grafia_aportuguesada %}
+            <hr>
+            <div class="grafia_aportuguesada"><b>grafia aportuguesada:</b> {{ object.grafia_aportuguesada }}</div>
+            <hr>
+        {% endif %}
         <div class="traducao"><b>tradução:</b> {{ object.traducao }}</div>
+        {% if not object.grafia_aportuguesada %}
         <hr>
+        {% endif %}
         <div class="definicao"><b>definição: </b>{{ object.definicao }}</div><br>
         {% for categoria in object.categoria.all %}
             <li class="categoria">{{ categoria.nome }}</li>

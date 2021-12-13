@@ -22,6 +22,7 @@ class Termo(models.Model):
     definicao = models.TextField(help_text='Insira uma definição em português do termo.')
     classe_gramatical = models.ForeignKey(ClasseGramatical, on_delete=models.SET_NULL, null=True)
     categoria = models.ManyToManyField(Categoria)
+    grafia_aportuguesada = models.CharField(max_length=200, null=True, blank=True)
     equivalencia = models.IntegerField(null=True, blank=True, validators=[
         MinValueValidator(1),
         MaxValueValidator(3)])
