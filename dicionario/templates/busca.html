@@ -1,0 +1,41 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Actor&family=Alegreya&family=Cormorant:wght@300;400&display=swap');
+body{
+    background-color: #FFF5EA;
+    position: relative;
+    margin: auto;
+}
+hr{
+    border: 1px dashed #99C1B9;
+}
+li{
+    list-style-type: none;
+}
+.busca{
+    font-size: 30px;
+}
+.resultado{
+    width: 85%;
+    margin: 20px 120px;
+    font-family: 'Alegreya', serif;
+    font-size: 24px;
+}
+#titulo{
+    font-family: 'Actor', serif;
+    color: #678881;
+    font-size: 65px;
+    margin: 20px 0 40px 120px;
+}
+</style>
+<body>
+    <header>
+        <div id="titulo">Portuguesismos</div>
+    </header>
+    <div class="resultado">
+        <div class="busca"><b>Buscando:</b> {{ request.GET.q }}</div>
+        <hr>
+        {% for termo in object_list %}
+        <li><a href="{{ termo.get_absolute_url }}">{{ termo.termo }}</a></li><br>
+        {% endfor %}
+    </div>
+</body>

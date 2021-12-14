@@ -33,4 +33,4 @@ class Termo(models.Model):
         return self.termo
 
     def get_absolute_url(self):
-        return reverse("termo_detail", kwargs={"slug": self.slug})
+        return reverse("termo-detail", kwargs={"slug": self.slug})
