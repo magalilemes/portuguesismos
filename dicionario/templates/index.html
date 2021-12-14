@@ -14,23 +14,52 @@ header{
     width: 100%;
     position: absolute;
     top: 30%;
+    margin-left: -25px;
     text-align: center;
     color: #678881;
 }
-input{
-    border-radius: 20px;
-    border: 0;
+#busca{
+    height: 50px;
     width: 600px;
-    height: 7%;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin: 0;
+}
+input{
+    font-size: 20px;
+    float: left;
+    border-radius: 20px;
+    border: 0;
+    width: 92%;
+    height: 100%;
     position: absolute;
+    margin: 0;
+}
+.fa-search{
+    float: right;
+    position: relative;
+    padding: 15px;
+    color: #678881;
+    margin-top: 2px;
+    border: none;
+    background: none;
+}
+button:hover{
+    cursor: pointer;
+    color: #23AD90;
 }
 </style>
 <body>
     <header>Portuguesismos</header>
-    <input></input>
+    <div id="busca">
+        <form action="{% url 'busca' %}" method="get">
+            <input name="q" type="text">
+            <button type="submit" class="fas fa-search"></button>
+        </form>
+        
+    </div>
+
+    <script src="https://kit.fontawesome.com/e107737398.js" crossorigin="anonymous"></script>
 </body>
 </html>
