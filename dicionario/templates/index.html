@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<meta charset="UTF-8">
-<title>Portuguesismos</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
-body{
-    background-color: #FFF5EA;
-}
+{% extends "base.html" %}
+{% block style %}
 header{
-    font-family: 'Actor', serif;
-    font-size: 65px;
     width: 100%;
     position: absolute;
     top: 30%;
     margin-left: -25px;
     text-align: center;
-    color: #678881;
 }
 #busca{
     height: 50px;
@@ -49,9 +38,9 @@ button:hover{
     cursor: pointer;
     color: #23AD90;
 }
-</style>
-<body>
-    <header>Portuguesismos</header>
+{% endblock %}
+{% block content %}
+    <header id="titulo">Portuguesismos</header>
     <div id="busca">
         <form action="{% url 'busca' %}" method="get">
             <input name="q" type="text">
@@ -61,5 +50,4 @@ button:hover{
     </div>
 
     <script src="https://kit.fontawesome.com/e107737398.js" crossorigin="anonymous"></script>
-</body>
-</html>
+{% endblock %}
