@@ -1,12 +1,20 @@
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Actor&family=Alegreya&family=Cormorant:wght@300;400&display=swap');
+{% extends "base.html" %}
+{% block style %}
+a{
+    text-decoration: none;
+}
+a:link{
+    color: #717171;
+}
+a:visited{
+    color: #228772;
+}
+a:hover{
+    color: #678881;
+}
 body{
-    background-color: #FFF5EA;
     position: relative;
     margin: auto;
-}
-hr{
-    border: 1px dashed #99C1B9;
 }
 .categoria{
     font-family: 'Alegreya', serif;
@@ -81,13 +89,10 @@ hr{
     background-color: #FA4B3E;
 }
 #titulo{
-    font-family: 'Actor', serif;
-    color: #678881;
-    font-size: 65px;
     margin: 20px 0 40px 120px;
 }
-</style>
-<body>
+{% endblock %}
+{% block content %}
     <header>
         <div id="titulo">Portuguesismos</div>
     </header>
@@ -124,7 +129,7 @@ hr{
         {% endif %}
         <div class="definicao"><b>definição: </b>{{ object.definicao }}</div><br>
         {% for categoria in object.categoria.all %}
-            <li class="categoria">{{ categoria.nome }}</li>
+            <li class="categoria"><a href="{{ categoria.get_absolute_url }}">{{ categoria.nome }}</a></li>
         {% endfor %}
     </div>
-</body>
+{% endblock %}

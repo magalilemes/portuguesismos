@@ -12,8 +12,13 @@ class ClasseGramatical(models.Model):
 class Categoria(models.Model):
     nome = models.CharField(max_length=100)
 
+    slug = models.SlugField(null=False, unique=True)
+
     def __str__(self):
         return self.nome
+
+    def get_absolute_url(self):
+        return reverse('categoria-detail', kwargs={"slug": self.slug})
 
 class Termo(models.Model):
     """Modelo representando um termo estrangeiro."""

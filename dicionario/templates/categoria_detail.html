@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block style %}
+body{
+    position: relative;
+    margin: auto;
+}
+li{
+    list-style-type: none;
+}
+.busca{
+    font-size: 30px;
+}
+.resultado{
+    width: 85%;
+    margin: 20px 120px;
+    font-family: 'Alegreya', serif;
+    font-size: 24px;
+}
+#titulo{
+    margin: 20px 0 40px 120px;
+}
+{% endblock %}
+{% block content %}
+<header>
+    <div id="titulo">Portuguesismos</div>
+</header>
+<div class="resultado">
+    <div class="busca"><b>Categoria: {{ object.nome }}</b></div>
+    <hr>
+
+    {% for termo in termos %}
+    <li><a href="{{ termo.get_absolute_url }}">{{ termo.termo }}</a></li><br>
+    {% endfor %}
+</div>
+{% endblock %}
