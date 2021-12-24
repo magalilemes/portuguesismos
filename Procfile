@@ -1,0 +1,1 @@
+web: gunicorn portuguesismos.wsgi --log-file -
