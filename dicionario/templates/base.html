@@ -11,6 +11,11 @@
     {% block style %}{% endblock %}
 </style>
 <body>
+    {% block header %}
+    <header>
+        <div id="titulo"><a href="{% url 'home' %}">Portuguesismos</a></div>
+    </header>
+    {% endblock %}
     {% block content %}{% endblock %}
 </body>
 </html>
