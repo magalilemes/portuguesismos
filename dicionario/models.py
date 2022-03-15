@@ -6,6 +6,10 @@ class ClasseGramatical(models.Model):
     """Modelo representando uma classe gramatical."""
     nome = models.CharField(max_length=20)
 
+    class Meta:
+        ordering = ['nome']
+        verbose_name_plural = 'classes gramaticais'
+
     def __str__(self):
         return self.nome
 
@@ -31,6 +35,9 @@ class Termo(models.Model):
     equivalencia = models.IntegerField(null=True, blank=True, validators=[
         MinValueValidator(1),
         MaxValueValidator(3)])
+
+    class Meta:
+        ordering = ['termo']
 
     slug = models.SlugField(null=False, unique=True)
 
