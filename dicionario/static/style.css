@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Actor&family=Alegreya&family=Cormorant:wght@300;400&display=swap');
 body{
     background-color: #FFF5EA;
+    margin-left: 0px;
 }
 #busca{
     height: 50px;
@@ -21,4 +22,10 @@ hr{
 #titulo a{
     text-decoration: none;
     color: unset;
+}
+@media only screen and (max-width: 600px) {
+    #titulo{
+        text-align: center;
+        font-size: 45px;
+    }
 }

@@ -4,7 +4,6 @@ header{
     width: 100%;
     position: absolute;
     top: 30%;
-    margin-left: -25px;
     text-align: center;
 }
 #busca{
@@ -38,9 +37,16 @@ button:hover{
     cursor: pointer;
     color: #23AD90;
 }
+@media only screen and (max-width: 600px) {
+    #busca{
+        width: 95%;
+    }
+    .fa-search{
+        padding-right: 0px;
+    }
+}
 {% endblock %}
 {% block content %}
-    <header id="titulo">Portuguesismos</header>
     <div id="busca">
         <form action="{% url 'busca' %}" method="get">
             <input name="q" type="text">
