@@ -24,14 +24,13 @@ body{
     list-style-type: none;
     margin: 5px;
     padding: 5px;
-    display: inline;
+    display: inline-block;
     border-radius: 10px;
 }
 .classe-gramatical{
     font-family: 'Alegreya', serif;
     font-size: 22px;
     text-transform: lowercase;
-    height: 2vw;
     padding: 10px 0 0 10px;
 }
 .equivalencia{
@@ -71,12 +70,12 @@ body{
 .termo{
     background-color: #FFF5EA;
     font-family: 'Cormorant', serif;
-    overflow: hidden;
+    overflow: auto;
     border: 1px #99C1B9 solid;
     font-size: 65px;
     padding: 3px 20px 2px 20px;
     margin-left: 100px;
-    display: inline;
+    display: inline-block;
     font-weight: bold;
 }
 .amarelo{
@@ -96,6 +95,7 @@ body{
         margin-left: 0;
     }
     .termo{
+        font-size: 12.5vw;
         margin-left: 10px;
     }
     .informacao{
@@ -119,6 +119,8 @@ body{
                         <div class="quadrado-equivalencia verde"></div>
                         <div class="quadrado-equivalencia verde"></div>
                         <div class="quadrado-equivalencia verde"></div>
+                    {% else %}
+                        <div class="quadrado-equivalencia"></div>
                     {% endif %}
                 </div>
                 <div class="classe-gramatical">{{ object.classe_gramatical }}</div>
